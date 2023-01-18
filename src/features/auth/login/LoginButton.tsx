@@ -4,10 +4,10 @@ const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
   return (
     <button
-      className="btn btn-primary btn-block"
+      className="py-2 px-4 text-sm bg-cyan-500 text-white rounded-lg font-medium ml-8"
       onClick={() => loginWithRedirect()}
     >
-      Log In
+      Join Now
     </button>
   );
 };

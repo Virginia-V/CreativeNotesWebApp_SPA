@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import ApiResponse from "../models/apiResponse";
+import LocalStorageService from "./LocalStorageService";
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
@@ -19,6 +20,17 @@ async function _delete<Result>(path: string): Promise<Result> {
   return execute(() => axios.delete(path));
 }
 
+function setToken() {
+  const tokenObjectString = LocalStorageService.getItem(
+    "@@auth0spajs@@::3k2I6FL9BBeqmLflCn3FEF2phEGDtcyf::http://localhost:5168/api::openid profile email"
+  );
+  if (!tokenObjectString) return;
+  const authObj = JSON.parse(tokenObjectString).body;
+  axios.defaults.headers[
+    "Authorization"
+  ] = `${authObj.token_type} ${authObj.access_token}`;
+}
+
 async function execute<TResult>(request: () => Promise<AxiosResponse<any>>) {
   try {
     const { data } = await request();
@@ -35,6 +47,7 @@ const httpMethods = {
   post,
   _delete,
   put,
+  setToken
 };
 
 export default httpMethods;

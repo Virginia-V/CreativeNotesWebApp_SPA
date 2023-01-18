@@ -4,14 +4,14 @@ const LogoutButton = () => {
   const { logout } = useAuth0();
   return (
     <button
-      className="btn btn-danger btn-block"
+      className="font-medium text-white bg-gray-800 py-2 px-4 my-6"
       onClick={() =>
         logout({
           returnTo: window.location.origin,
         })
       }
     >
-      Log Out
+      Sign Out
     </button>
   );
 };
