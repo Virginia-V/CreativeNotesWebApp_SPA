@@ -7,7 +7,7 @@ export default function Nav() {
 
   return (
     <nav className="flex justify-between items-center py-10">
-      <Link className="text-lg font-medium" to="/">
+      <Link className="text-lg font-medium" to="/dashboard">
         Creative Minds
       </Link>
       <ul className="flex items-center gap-10">
