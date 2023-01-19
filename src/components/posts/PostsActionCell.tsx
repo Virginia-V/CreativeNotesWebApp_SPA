@@ -14,6 +14,7 @@ export function PostsActionCell({ post }) {
           Edit
         </button>
       </Link>
+      
     </div>
   );
 }
