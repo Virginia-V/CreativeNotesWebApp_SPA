@@ -12,7 +12,6 @@ export default function Dashboard() {
   const { isAuthenticated } = useAuth0();
 
   const getData = async () => {
-    if (!isAuthenticated) return;
     apiRequest.execute(
       () => postService.get(),
       (result) => setPosts(result)
